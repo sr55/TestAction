@@ -1,0 +1,13 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+
+  update_nightly_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Demo File
+        run: date >> output.txt
+      - name: Update Nightly
+        run: gh release upload nightly *.txt -R ${{github.repository}} --clobber
